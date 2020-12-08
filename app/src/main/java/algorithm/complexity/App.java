@@ -11,10 +11,13 @@ public class App {
         // bigger the algorithm
         // more time and space it will consume
 
-        int value = 100544;
-
-        int[] array = generateArray();
+        int size = 10000000;
+        int[] array = generateArray(10000000);
         shuffle(array);
+
+        printHeader(size);
+
+        int value = 100544;
 
         // ----------------------------------------
         // O(n)
@@ -26,10 +29,53 @@ public class App {
         // O(log n)
         // ----------------------------------------
 
-        // The key aspect here is that the array is already sorted.
+        // The key aspect here is that the array is already sorted
         int[] clonedArray = array.clone();
         Arrays.sort(clonedArray);
+        // binary search keeps splitting the the search in 2 (left and right)
         new SearchExecutor(new BinarySearch()).search(value, clonedArray);
+    }
+
+    private static void printHeader(int size) {
+        System.out.println("\n" +
+                " ______________     _             _,-----------._        ___\n" +
+                "|              |   (_,.-      _,-'_,-----------._`-._    _)_)\n" +
+                "| THE _  _  _  |      |     ,'_,-'  ___________  `-._`.\n" +
+                "| |  / \\|_)| \\ |     `'   ,','  _,-'___________`-._  `.`.\n" +
+                "| |__\\_/| \\|_/ |        ,','  ,'_,-'     .     `-._`.  `.`.\n" +
+                "|              |       /,'  ,','        >|<        `.`.  `.\\\n" +
+                "| OF THE  _ _  |      //  ,','      ><  ,^.  ><      `.`.  \\\\\n" +
+                "| |_)||\\|/_(_  |     //  /,'      ><   / | \\   ><      `.\\  \\\\\n" +
+                "| | \\|| |\\_|_) |    //  //      ><    \\/\\^/\\/    ><      \\\\  \\\\\n" +
+                "|______________|   ;;  ;;              `---'              ::  ::\n" +
+                "                   ||  ||              (____              ||  ||\n" +
+                " DOORS OF DURIN   _||__||_            ,'----.            _||__||_\n" +
+                "                 (o.____.o)____        `---'        ____(o.____.o)\n" +
+                "                   |    | /,--.)                   (,--.\\ |    |\n" +
+                "                   |    |((  -`___               ___`   ))|    |\n" +
+                "                   |    | \\\\,'',  `.           .'  .``.// |    |\n" +
+                "                   |    |  // (___,'.         .'.___) \\\\  |    |\n" +
+                "                  /|    | ;;))  ____) .     . (____  ((\\\\ |    |\\\n" +
+                "                  \\|.__ | ||/ .'.--.\\/       `/,--.`. \\;: | __,|;\n" +
+                "                   |`-,`;.| :/ /,'  `)-'   `-('  `.\\ \\: |.;',-'|\n" +
+                "                   |   `..  ' / \\__.'         `.__/ \\ `  ,.'   |\n" +
+                "                   |    |,\\  /,                     ,\\  /,|    |\n" +
+                "                   |    ||: : )          .          ( : :||    |\n" +
+                "                  /|    |:; |/  .      ./|\\,      ,  \\| :;|    |\\\n" +
+                "                  \\|.__ |/  :  ,/-    <--:-->    ,\\.  ;  \\| __,|;\n" +
+                "                   |`-.``:   `'/-.     '\\|/`     ,-\\`;   ;'',-'|\n" +
+                "                   |   `..   ,' `'       '       `  `.   ,.'   |\n" +
+                "                   |    ||  :                         :  ||    |\n" +
+                "                   |    ||  |                         |  ||    |\n" +
+                "                   |    ||  |                         |  ||    |\n" +
+                "                   |    |'  |            _            |  `|    |\n" +
+                "                   |    |   |          '|))           |   |    |\n" +
+                "                   ;____:   `._        `'           _,'   ;____:\n" +
+                "                  {______}     \\___________________/     {______}\n" +
+                "              SSt |______|_______________________________|______|");
+
+        System.out.println("\n\nUsing sample with " + size + " positions.");
+        System.out.println("Running algorithms...");
     }
 
     private static void shuffle(int[] array) {
@@ -42,8 +88,8 @@ public class App {
         }
     }
 
-    private static int[] generateArray() {
-        int[] array = new int[10000000];
+    private static int[] generateArray(int size) {
+        int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
             array[i] = i+1;
         }
