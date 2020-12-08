@@ -1,4 +1,6 @@
-package algorithm.complexity;
+package algorithm.complexity.search;
+
+import algorithm.complexity.search.Search;
 
 public class SearchExecutor {
     private Search search;

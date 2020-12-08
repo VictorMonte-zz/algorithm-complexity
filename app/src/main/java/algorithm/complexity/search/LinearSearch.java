@@ -1,6 +1,6 @@
-package algorithm.complexity;
+package algorithm.complexity.search;
 
-public class LinearSearch implements Search{
+public class LinearSearch implements Search {
     public int find(int value, int[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == value) {

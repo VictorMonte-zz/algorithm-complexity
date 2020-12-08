@@ -3,6 +3,12 @@
  */
 package algorithm.complexity;
 
+import algorithm.complexity.search.LinearSearch;
+import algorithm.complexity.search.BinarySearch;
+import algorithm.complexity.search.SearchExecutor;
+import algorithm.complexity.sort.BubbleSort;
+import algorithm.complexity.sort.SortExecutor;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,11 +17,14 @@ public class App {
         // bigger the algorithm
         // more time and space it will consume
 
-        int size = 10000000;
-        int[] array = generateArray(10000000);
-        shuffle(array);
+        int searchArraySize = 1000000;
+        int sortArraySize = 1000;
+        int[] searchSample = generateSample(searchArraySize);
+        int[] sortSample = generateSample(sortArraySize);
 
-        printHeader(size);
+        System.out.println("\n\nUsing sample with " + searchArraySize + " positions for search.");
+        System.out.println("\n\nUsing sample with " + sortArraySize + " positions for sort.");
+        System.out.println("Running algorithms...");
 
         int value = 100544;
 
@@ -23,59 +32,29 @@ public class App {
         // O(n)
         // ----------------------------------------
 
-        new SearchExecutor(new LinearSearch()).search(value, array);
+        new SearchExecutor(new LinearSearch()).search(value, searchSample);
+
+        // ----------------------------------------
+        // O(n^2)
+        // ----------------------------------------
+
+        new SortExecutor(new BubbleSort()).sort(sortSample);
 
         // ----------------------------------------
         // O(log n)
         // ----------------------------------------
 
         // The key aspect here is that the array is already sorted
-        int[] clonedArray = array.clone();
+        int[] clonedArray = searchSample.clone();
         Arrays.sort(clonedArray);
         // binary search keeps splitting the the search in 2 (left and right)
         new SearchExecutor(new BinarySearch()).search(value, clonedArray);
     }
 
-    private static void printHeader(int size) {
-        System.out.println("\n" +
-                " ______________     _             _,-----------._        ___\n" +
-                "|              |   (_,.-      _,-'_,-----------._`-._    _)_)\n" +
-                "| THE _  _  _  |      |     ,'_,-'  ___________  `-._`.\n" +
-                "| |  / \\|_)| \\ |     `'   ,','  _,-'___________`-._  `.`.\n" +
-                "| |__\\_/| \\|_/ |        ,','  ,'_,-'     .     `-._`.  `.`.\n" +
-                "|              |       /,'  ,','        >|<        `.`.  `.\\\n" +
-                "| OF THE  _ _  |      //  ,','      ><  ,^.  ><      `.`.  \\\\\n" +
-                "| |_)||\\|/_(_  |     //  /,'      ><   / | \\   ><      `.\\  \\\\\n" +
-                "| | \\|| |\\_|_) |    //  //      ><    \\/\\^/\\/    ><      \\\\  \\\\\n" +
-                "|______________|   ;;  ;;              `---'              ::  ::\n" +
-                "                   ||  ||              (____              ||  ||\n" +
-                " DOORS OF DURIN   _||__||_            ,'----.            _||__||_\n" +
-                "                 (o.____.o)____        `---'        ____(o.____.o)\n" +
-                "                   |    | /,--.)                   (,--.\\ |    |\n" +
-                "                   |    |((  -`___               ___`   ))|    |\n" +
-                "                   |    | \\\\,'',  `.           .'  .``.// |    |\n" +
-                "                   |    |  // (___,'.         .'.___) \\\\  |    |\n" +
-                "                  /|    | ;;))  ____) .     . (____  ((\\\\ |    |\\\n" +
-                "                  \\|.__ | ||/ .'.--.\\/       `/,--.`. \\;: | __,|;\n" +
-                "                   |`-,`;.| :/ /,'  `)-'   `-('  `.\\ \\: |.;',-'|\n" +
-                "                   |   `..  ' / \\__.'         `.__/ \\ `  ,.'   |\n" +
-                "                   |    |,\\  /,                     ,\\  /,|    |\n" +
-                "                   |    ||: : )          .          ( : :||    |\n" +
-                "                  /|    |:; |/  .      ./|\\,      ,  \\| :;|    |\\\n" +
-                "                  \\|.__ |/  :  ,/-    <--:-->    ,\\.  ;  \\| __,|;\n" +
-                "                   |`-.``:   `'/-.     '\\|/`     ,-\\`;   ;'',-'|\n" +
-                "                   |   `..   ,' `'       '       `  `.   ,.'   |\n" +
-                "                   |    ||  :                         :  ||    |\n" +
-                "                   |    ||  |                         |  ||    |\n" +
-                "                   |    ||  |                         |  ||    |\n" +
-                "                   |    |'  |            _            |  `|    |\n" +
-                "                   |    |   |          '|))           |   |    |\n" +
-                "                   ;____:   `._        `'           _,'   ;____:\n" +
-                "                  {______}     \\___________________/     {______}\n" +
-                "              SSt |______|_______________________________|______|");
-
-        System.out.println("\n\nUsing sample with " + size + " positions.");
-        System.out.println("Running algorithms...");
+    private static int[] generateSample(int sizeForSearch) {
+        int[] arrayForSearch = generateArray(sizeForSearch);
+        shuffle(arrayForSearch);
+        return arrayForSearch;
     }
 
     private static void shuffle(int[] array) {

@@ -1,6 +1,6 @@
-package algorithm.complexity;
+package algorithm.complexity.search;
 
-public class BinarySearch implements Search{
+public class BinarySearch implements Search {
     public int find(int value, int[] array) {
         int left = 0, right = array.length - 1;
         while (left <= right) {
