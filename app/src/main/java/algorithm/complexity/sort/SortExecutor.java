@@ -16,9 +16,9 @@ public class SortExecutor {
 
         long duration = (endTime - startTime);
         System.out.println("--------------------------------------------------");
-        System.out.println("---" + sorter.getComplexity());
-        System.out.println("---" + sorter.getType() + " result:   " + Arrays.toString(result));
-        System.out.println("---" + sorter.getType() + " duration: " + (double)duration/1000000+ "ms");
+        System.out.println("--- " + sorter.getComplexity());
+        System.out.println("--- " + sorter.getType() + " result:   " + Arrays.toString(result));
+        System.out.println("--- " + sorter.getType() + " duration: " + (double)duration/1000000+ "ms");
         System.out.println("--------------------------------------------------");
     }
 }

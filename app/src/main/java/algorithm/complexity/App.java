@@ -7,6 +7,7 @@ import algorithm.complexity.search.LinearSearch;
 import algorithm.complexity.search.BinarySearch;
 import algorithm.complexity.search.SearchExecutor;
 import algorithm.complexity.sort.BubbleSort;
+import algorithm.complexity.sort.QuickSort;
 import algorithm.complexity.sort.SortExecutor;
 
 import java.util.Arrays;
@@ -49,6 +50,21 @@ public class App {
         Arrays.sort(clonedArray);
         // binary search keeps splitting the the search in 2 (left and right)
         new SearchExecutor(new BinarySearch()).search(value, clonedArray);
+
+        // ----------------------------------------
+        // O(n log n)
+        // ----------------------------------------
+
+        /*
+        * comparisons = log n!
+        * comparisons = log n + log(n-1) + ... + log (1)
+        * comparisons = n log n
+        * */
+
+        // less time shifting numbers.. more efficiently
+
+        new SortExecutor(new QuickSort()).sort(sortSample);
+
     }
 
     private static int[] generateSample(int sizeForSearch) {

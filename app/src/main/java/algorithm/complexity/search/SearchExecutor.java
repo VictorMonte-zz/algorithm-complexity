@@ -16,9 +16,9 @@ public class SearchExecutor {
 
         long duration = (endTime - startTime);
         System.out.println("--------------------------------------------------");
-        System.out.println("---" + search.getComplexity());
-        System.out.println("---" + search.getType() + " result:   " + result);
-        System.out.println("---" + search.getType() + " duration: " + (double)duration/1000000+ "ms");
+        System.out.println("--- " + search.getComplexity());
+        System.out.println("--- " + search.getType() + " result:   " + result);
+        System.out.println("--- " + search.getType() + " duration: " + (double)duration/1000000+ "ms");
         System.out.println("--------------------------------------------------");
     }
 }
